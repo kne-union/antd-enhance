@@ -1,6 +1,6 @@
 {
   "name": "@kne/antd-enhance",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "用于扩展和增强antd",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
