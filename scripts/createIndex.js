@@ -6,7 +6,7 @@ glob(path.resolve(__dirname,'../src/+(components|hocs|hooks|func)/**/*.js')).the
   const moduleListInfo = files.map((dir)=>{
     return {
       name:path.basename(dir,path.extname(dir)),
-      dir:`./${path.relative(path.resolve(__dirname,'../src/'),dir).replace(path.extname(dir),'')}`
+      dir:`./${path.relative(path.resolve(__dirname,'../src/'),dir).replace(path.extname(dir),'').replace('\\','/')}`
     };
   });
   const fileContent = `export {default as preset} from './preset';
