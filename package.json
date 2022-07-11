@@ -1,6 +1,6 @@
 {
   "name": "@kne/antd-enhance",
-  "version": "0.1.11",
+  "version": "0.2.11",
   "description": "用于扩展和增强antd",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
@@ -45,8 +45,8 @@
   },
   "peerDependencies": {
     "prop-types": ">=15.x",
-    "react": ">=16.x",
-    "react-dom": ">=16.x"
+    "react": ">=18.x",
+    "react-dom": ">=18.x"
   },
   "devDependencies": {
     "@babel/plugin-transform-runtime": "^7.7.6",

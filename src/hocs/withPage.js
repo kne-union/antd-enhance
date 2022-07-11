@@ -1,12 +1,35 @@
-import React, {useState} from 'react';
-import {setting} from '../preset';
+import React, { useState, forwardRef } from 'react';
+import { setting } from '../preset';
 
-export default ((WrappedComponent) => ({data, params, ...props}) => {
-    const [current, setCurrent] = useState(setting.withPage.initCurrent);
-    return <WrappedComponent {...props}
-                             params={Object.assign({}, params, setting.withPage.transform({page: current}))}
-                             data={Object.assign({}, data, setting.withPage.transform({page: current}))}
-                             onPageChange={(page) => {
-                                 setCurrent(page);
-                             }}/>;
-});
+export default WrappedComponent =>
+  forwardRef(({ data, initCurrent, pageSize, params, ...props }, ref) => {
+    const [pageParams, setPageParams] = useState({
+      current: initCurrent || setting.withPage.initCurrent,
+      size: pageSize
+    });
+    return (
+      <WrappedComponent
+        ref={ref}
+        {...props}
+        params={Object.assign(
+          {},
+          params,
+          setting.withPage.transform({
+            page: pageParams.current,
+            size: pageParams.size
+          })
+        )}
+        data={Object.assign(
+          {},
+          data,
+          setting.withPage.transform({
+            page: pageParams.current,
+            size: pageParams.size
+          })
+        )}
+        onPageChange={(page, size) => {
+          setPageParams({ current: page, size });
+        }}
+      />
+    );
+  });
